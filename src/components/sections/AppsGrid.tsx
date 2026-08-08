@@ -13,13 +13,13 @@ export default async function AppsGrid() {
           <FadeUp>
             <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-start">
               <div>
-                <p className="text-[10px] font-medium uppercase tracking-widest text-text-muted">Labs</p>
+                <p className="text-[15px] font-medium uppercase tracking-widest text-text-muted">Labs</p>
                 <h2 className="mt-1 text-[46px] font-extrabold leading-[0.98] tracking-tight">
                   <span className="block text-white">Apps I shipped,</span>
                   <span className="block text-[#24B8FF]">designed &amp; built.</span>
                 </h2>
               </div>
-              <p className="max-w-[260px] text-right text-[11px] leading-relaxed text-text-muted">
+              <p className="max-w-[260px] text-right text-[12px] leading-relaxed text-text-muted">
                 Little experiments where I do it all — design, code, copy, and ship. Kept small so they stay fun.
               </p>
             </div>

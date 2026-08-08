@@ -26,9 +26,9 @@ export default function AppCard({ image, title, description, category, year }: A
         )}
       </div>
 
-      <h3 className="mt-6 text-sm font-semibold text-white">{title}</h3>
-      <p className="mt-1.5 max-w-[220px] text-[10px] leading-relaxed text-text-muted">{description}</p>
-      <p className="mt-2 text-[9px] uppercase tracking-wide text-text-muted/70">{category} &middot; {year}</p>
+      <h2 className="mt-6 text-lg font-semibold text-white">{title}</h2>
+      <p className="mt-1.5 max-w-[220px] text-[15px] leading-relaxed text-text-muted">{description}</p>
+      <p className="mt-2 text-[12px] uppercase tracking-wide text-text-muted/70">{category} &middot; {year}</p>
     </div>
   )
 }

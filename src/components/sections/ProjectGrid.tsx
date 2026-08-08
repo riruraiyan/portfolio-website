@@ -22,23 +22,31 @@ export default async function ProjectGrid() {
             </div>
           </FadeUp>
 
-          <div className="mt-10 grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2">
-            {projects?.length > 0 ? (
-              projects.map((project: any, index: number) => (
+          {projects?.length > 0 ? (
+            <div
+              className={
+                projects.length === 1
+                  ? 'mt-10 flex justify-center'
+                  : 'mt-10 grid grid-cols-1 gap-x-5 gap-y-10 sm:grid-cols-2'
+              }
+            >
+              {projects.map((project: any, index: number) => (
                 <FadeUp key={project._id} delay={index * 0.1}>
-                  <ProjectCard
-                    image={project.image}
-                    company={project.company}
-                    title={project.title}
-                    description={project.description}
-                    year={project.year}
-                  />
+                  <div className={projects.length === 1 ? 'w-full sm:max-w-[460px]' : ''}>
+                    <ProjectCard
+                      image={project.image}
+                      company={project.company}
+                      title={project.title}
+                      description={project.description}
+                      year={project.year}
+                    />
+                  </div>
                 </FadeUp>
-              ))
-            ) : (
-              <p className="text-text-muted">No projects published yet — add some in Sanity Studio.</p>
-            )}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-10 text-text-muted">No projects published yet — add some in Sanity Studio.</p>
+          )}
         </div>
       </Container>
     </section>

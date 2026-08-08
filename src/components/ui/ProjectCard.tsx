@@ -31,11 +31,11 @@ export default function ProjectCard({ image, company, title, description, year }
       </div>
 
       <div className="mt-3 flex items-center justify-between">
-        <span className="text-[10px] font-medium uppercase tracking-wide text-[#111111]">{company}</span>
-        <span className="text-[10px] text-text-muted">{year}</span>
+        <span className="text-[13px] font-medium uppercase tracking-wide text-[#111111]">{company}</span>
+        <span className="text-[12px] text-text-muted">{year}</span>
       </div>
-      <h3 className="mt-1 text-[17px] font-semibold text-[#111111]">{title}</h3>
-      <p className="mt-1 text-[11px] leading-relaxed text-text-muted">{description}</p>
+      <h3 className="mt-1 text-[25px] font-semibold text-[#111111]">{title}</h3>
+      <p className="mt-1 text-[13px] leading-relaxed text-text-muted">{description}</p>
     </div>
   )
 }
