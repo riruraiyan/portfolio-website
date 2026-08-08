@@ -14,7 +14,7 @@ export default function Footer() {
       <Container>
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           <p className="text-sm text-white/80">
-            © {year} YourName. All rights reserved.
+            © {year} Mosharaf Robin. All rights reserved.
           </p>
 
           <div className="flex items-center gap-6">

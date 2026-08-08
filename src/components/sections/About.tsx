@@ -1,56 +1,110 @@
 import Container from '@/components/ui/Container'
-import Button from '@/components/ui/Button'
-import Badge from '@/components/ui/Badge'
+import FadeUp from '@/components/ui/FadeUp'
 import { getAbout } from '@/lib/fetchData'
-import { PortableText } from 'next-sanity'
+import {
+  PortableText,
+  type PortableTextComponents,
+} from 'next-sanity'
+
+const portableTextComponents: PortableTextComponents = {
+  marks: {
+    highlight: ({ children }) => (
+      <span className="text-[#24B8FF]">{children}</span>
+    ),
+  },
+}
 
 export default async function About() {
   const about = await getAbout()
 
   return (
-    <section id="about" className="bg-bg-light py-[120px]">
+    <section
+      id="about"
+      className="bg-white py-24 sm:py-28"
+    >
       <Container>
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.4fr_1fr]">
-          {/* Left: Large story */}
-          <div className="prose prose-lg max-w-none text-[#111111]">
-            {about?.story ? (
-              <PortableText value={about.story} />
-            ) : (
-              <p className="text-[18px] leading-relaxed text-[#111111]">
-                My story goes here — add it in Sanity Studio under About Section.
-              </p>
-            )}
-          </div>
-
-          {/* Right: Short description + buttons + pills */}
-          <div>
-            <p className="text-[18px] leading-relaxed text-text-muted">
-              {about?.shortDescription || 'A short description about you goes here.'}
+        <div className="mx-auto max-w-[720px]">
+          {/* Eyebrow */}
+          <FadeUp>
+            <p className="text-[9px] font-medium uppercase tracking-[0.18em] text-[#999999]">
+              About
             </p>
+          </FadeUp>
 
-            <div className="mt-8 flex gap-4">
-              <Button href={about?.resumeUrl || '#'} variant="primary">
-                Resume
-              </Button>
-              <Button href="#contact" variant="secondary">
-                Contact
-              </Button>
+          {/* Main Content */}
+          <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-[1.8fr_1fr] lg:gap-12">
+            {/* LEFT COLUMN */}
+            <div>
+              <FadeUp delay={0.1}>
+                <div className="text-[22px] font-medium leading-[1.2] tracking-[-0.025em] text-[#111111] sm:text-[25px]">
+                  {about?.story ? (
+                    <PortableText
+                      value={about.story}
+                      components={portableTextComponents}
+                    />
+                  ) : (
+                    <p>
+                      My story goes here — add it in Sanity Studio under
+                      About Section.
+                    </p>
+                  )}
+                </div>
+              </FadeUp>
+
+              {/* Info Pills */}
+              <FadeUp delay={0.2}>
+                {about?.infoPills?.length > 0 && (
+                  <div className="mt-5 flex flex-wrap gap-1.5">
+                    {about.infoPills.map(
+                      (
+                        pill: {
+                          label: string
+                          value: string
+                        },
+                        i: number
+                      ) => (
+                        <span
+                          key={i}
+                          className="inline-flex items-center rounded-full border border-[#E5E5E5] bg-[#F7F7F6] px-2.5 py-1 text-[8px] leading-none text-[#666666]"
+                        >
+                          {pill.label ? `${pill.label} ` : ''}
+                          {pill.value}
+                        </span>
+                      )
+                    )}
+                  </div>
+                )}
+              </FadeUp>
             </div>
 
-            <div className="mt-10 grid grid-cols-2 gap-4">
-              {about?.infoPills?.length > 0 ? (
-                about.infoPills.map((pill: { label: string; value: string }, i: number) => (
-                  <Badge key={i} label={pill.label} value={pill.value} />
-                ))
-              ) : (
-                <>
-                  <Badge label="Location" value="—" />
-                  <Badge label="Experience" value="—" />
-                  <Badge label="Coffee" value="—" />
-                  <Badge label="Curiosity" value="—" />
-                </>
-              )}
-            </div>
+            {/* RIGHT COLUMN */}
+            <FadeUp delay={0.15}>
+              <div>
+                <p className="max-w-[240px] text-[10px] leading-[1.5] text-[#777777]">
+                  {about?.shortDescription ||
+                    'A short description about you goes here.'}
+                </p>
+
+                {/* Buttons */}
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <a
+                    href="#about"
+                    className="inline-flex h-[32px] items-center justify-center rounded-full border border-[#E2E2E2] bg-white px-3.5 text-[10px] font-medium text-[#111111] transition-colors hover:bg-[#F5F5F4]"
+                  >
+                    More about me
+                  </a>
+
+                  <a
+                    href={about?.resumeUrl || '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex h-[32px] items-center justify-center rounded-full bg-[#111111] px-3.5 text-[10px] font-medium text-white transition-colors hover:bg-[#222222]"
+                  >
+                    Download resume
+                  </a>
+                </div>
+              </div>
+            </FadeUp>
           </div>
         </div>
       </Container>

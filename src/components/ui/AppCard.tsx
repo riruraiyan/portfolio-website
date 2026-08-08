@@ -11,27 +11,24 @@ type AppCardProps = {
 
 export default function AppCard({ image, title, description, category, year }: AppCardProps) {
   return (
-    <div className="group cursor-pointer">
-      <div className="overflow-hidden rounded-card bg-[#111111] p-6">
+    <div className="group flex flex-col items-center text-center">
+      <div className="flex h-[250px] w-full items-center justify-center">
         {image ? (
           <Image
-            src={urlFor(image).width(400).height(800).url()}
+            src={urlFor(image).width(300).height(600).url()}
             alt={title}
-            width={400}
-            height={800}
-            className="mx-auto h-auto w-full max-w-[240px] rounded-2xl object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            width={300}
+            height={600}
+            className="h-[250px] w-auto object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
           />
         ) : (
-          <div className="mx-auto aspect-[9/19] w-full max-w-[240px] rounded-2xl bg-[#222222]" />
+          <div className="h-[250px] w-[125px] rounded-2xl bg-[#111111]" />
         )}
       </div>
 
-      <div className="mt-5">
-        <p className="text-sm text-[#1F8FFF]">{category}</p>
-        <h3 className="mt-1 text-xl font-extrabold text-white">{title}</h3>
-        <p className="mt-2 text-[16px] text-text-muted">{description}</p>
-        <p className="mt-2 text-sm text-text-muted">{year}</p>
-      </div>
+      <h3 className="mt-6 text-sm font-semibold text-white">{title}</h3>
+      <p className="mt-1.5 max-w-[220px] text-[10px] leading-relaxed text-text-muted">{description}</p>
+      <p className="mt-2 text-[9px] uppercase tracking-wide text-text-muted/70">{category} &middot; {year}</p>
     </div>
   )
 }
