@@ -4,7 +4,8 @@ import ProjectGrid from '@/components/sections/ProjectGrid'
 import AppsGrid from '@/components/sections/AppsGrid'
 import About from '@/components/sections/About'
 import CTA from '@/components/sections/CTA'
-import Footer from '@/components/layout/Footer'
+
+export const revalidate = 60
 
 export default function Home() {
   return (
@@ -15,7 +16,6 @@ export default function Home() {
       <AppsGrid />
       <About />
       <CTA />
-      <Footer />
     </main>
   )
 }

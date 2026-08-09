@@ -6,8 +6,10 @@ import AboutElsewhere from '@/components/sections/AboutElsewhere'
 import AboutTestimonials from '@/components/sections/AboutTestimonials'
 import AboutBeyondScreen from '@/components/sections/AboutBeyondScreen'
 import AboutFinalCTA from '@/components/sections/AboutFinalCTA'
-import { getAbout } from '@/lib/fetchData'
 import Footer from '@/components/layout/Footer'
+import { getAbout } from '@/lib/fetchData'
+
+export const revalidate = 60
 
 export default async function AboutPage() {
   const about = await getAbout()
@@ -32,7 +34,7 @@ export default async function AboutPage() {
         headingBefore={about?.ctaHeadingBefore || "Let's make something "}
         headingHighlight={about?.ctaHeadingHighlight || 'good.'}
         sayHiLabel={about?.ctaSayHiLabel || 'Say hi'}
-        sayHiUrl={about?.ctaSayHiUrl || '/about'}
+        sayHiUrl={about?.ctaSayHiUrl || '#'}
         resumeLabel={about?.ctaResumeLabel || 'Download resume'}
         resumeUrl={about?.ctaResumeUrl || '#'}
         backToWorkLabel={about?.ctaBackToWorkLabel || 'Back to work'}
